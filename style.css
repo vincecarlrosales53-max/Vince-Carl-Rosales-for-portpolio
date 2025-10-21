@@ -242,8 +242,9 @@ lab-card, .profile-card {
 /* Slightly stagger timings for organic motion */
 .profile-card { animation-delay: 0s, 0s; }
 .card:nth-child(odd) { animation-delay: 1.5s, 0.8s; }
-.card:nth-child(even) { animation-delay: 3s, 2s; }
+.card:nth-child(even) { animation-delay: 2s, 2s; }
 .labs-grid a.lab-card:nth-child(3n+1) { animation-delay: 2s, 1s; }
 .labs-grid a.lab-card:nth-child(3n+2) { animation-delay: 4s, 3s; }
 .labs-grid a.lab-card:nth-child(3n+3) { animation-delay: 5s, 1.5s; }
+
 
