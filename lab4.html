@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activity 2</title>
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #f2f2f2;
+    }
+
+    .profile {
+      text-align: center;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      width: 300px;
+    }
+
+    .profile img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+    }
+
+    .profile h1 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .profile p {
+      font-size: 14px;
+      color: #333;
+    }
+
+    #btn-aboutme {
+      background-color: chocolate;
+      color: wheat;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 15px;
+      cursor: pointer;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    #btn-aboutme:hover {
+      background-color: coral;
+    }
+
+    .hide {
+      display: none;
+    }
+
+    #info {
+      margin-top: 15px;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+  <div class="profile">
+    <img src="vince.jpg"Profile Image">
+    <h1>Vince Carl Rosales</h1>
+    <p>JUST DO YOUR BEST.</p>
+
+    <button id="btn-aboutme">ABOUT ME</button>
+
+    <div id="info" class="hide">
+      <p>I am a self made programmer. My passion runs through my blood.</p>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const btnAboutme = document.getElementById("btn-aboutme");
+      const divAboutme = document.getElementById("info");
+
+      btnAboutme.addEventListener("click", function () {
+        if (divAboutme.classList.contains("hide")) {
+          divAboutme.classList.remove("hide");
+          btnAboutme.textContent = "Show Less";
+        } else {
+          divAboutme.classList.add("hide");
+          btnAboutme.textContent = "ABOUT ME";
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+

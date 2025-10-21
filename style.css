@@ -1,0 +1,249 @@
+:root {
+  --bg: #0b1220;
+  --muted: rgba(255,255,255,0.65);
+  --accent: linear-gradient(90deg,#5ee7df,#7c5cff);
+  --accent-color: #7c5cff;
+  --radius: 12px;
+  --max-width: 1100px;
+}
+
+/* ========== BODY & ANIMATED BACKGROUND ========== */
+body {
+  margin: 0;
+  color: #e6eef8;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
+  overflow-x: hidden;
+  background: var(--bg);
+}
+
+/* Background gradient animation */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(120deg, #5ee7df, #7c5cff, #2b1055, #7597de);
+  background-size: 300% 300%;
+  animation: gradientMove 12s ease infinite;
+  z-index: -3;
+}
+
+/* Floating glowing dots */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: radial-gradient(circle at 10% 10%, rgba(255,255,255,0.15) 0%, transparent 40%),
+                    radial-gradient(circle at 80% 20%, rgba(124,92,255,0.25) 0%, transparent 40%),
+                    radial-gradient(circle at 50% 80%, rgba(94,231,223,0.18) 0%, transparent 40%);
+  animation: floatGlow 25s linear infinite;
+  z-index: -2;
+  opacity: 0.8;
+}
+
+/* Keyframes for animations */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes floatGlow {
+  0% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-20px) scale(1.05); }
+  100% { transform: translateY(0px) scale(1); }
+}
+
+/* ========= APP LAYOUT ========= */
+.app { max-width: var(--max-width); margin: 28px auto; padding: 0 20px; }
+
+/* ========= TOPBAR ========= */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255,255,255,0.05);
+  padding: 12px 18px;
+  border-radius: 14px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+  position: relative;
+  z-index: 10;
+}
+
+.brand { display: flex; align-items: center; gap: 10px; }
+.logo {
+  width: 48px; height: 48px;
+  border-radius: 10px;
+  background: var(--accent-color);
+  display: grid; place-items: center;
+  color: #061221; font-weight: 800;
+}
+.brand-text .name { font-weight: 800; }
+.brand-text .tag { font-size: 0.85rem; color: var(--muted); }
+
+.nav-list { display: flex; gap: 10px; list-style: none; margin: 0; padding: 0; }
+.nav-list a {
+  text-decoration: none; color: var(--muted);
+  font-weight: 700; padding: 8px 12px; border-radius: 8px;
+  transition: 0.2s;
+}
+.nav-list a:hover, .nav-list a.active {
+  color: #fff;
+  background: rgba(255,255,255,0.08);
+}
+
+/* ========= HERO SECTION ========= */
+.section { margin: 30px 0; position: relative; z-index: 1; }
+.hero-inner { display: flex; flex-wrap: wrap; align-items: center; gap: 30px; }
+.hero-left { flex: 1; min-width: 260px; }
+h1 { font-size: 2.2rem; margin-bottom: 10px; }
+.accent { background: var(--accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.lead { color: var(--muted); margin-bottom: 15px; }
+.btn {
+  display: inline-block;
+  background: var(--accent);
+  color: #07121a;
+  font-weight: 700;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: transform 0.15s;
+}
+.btn:hover { transform: translateY(-3px); }
+.btn.alt {
+  background: transparent;
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+}
+.quick-contact { list-style: none; padding: 0; color: var(--muted); }
+
+/* ========= PROFILE CARD ========= */
+.profile-card {
+  width: 300px; text-align: center;
+  background: rgba(255,255,255,0.06);
+  border-radius: 12px;
+  padding: 18px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+.avatar-wrap {
+  width: 180px; height: 180px; border-radius: 12px; overflow: hidden;
+  margin: 0 auto 10px;
+  border: 3px solid rgba(124,92,255,0.4);
+}
+.profile-card img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ========= CARD SECTIONS ========= */
+.card {
+  background: rgba(255,255,255,0.05);
+  padding: 22px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+  backdrop-filter: blur(6px);
+}
+
+/* ========= EDUCATION / EXPERIENCE ========= */
+.edu-grid, .exp-list, .projects-grid {
+  display: grid;
+  gap: 14px;
+  margin-top: 12px;
+}
+.edu-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+.exp-item { background: rgba(255,255,255,0.04); padding: 12px; border-radius: 10px; }
+
+/* ========= LAB CARDS ========= */
+.labs-grid a.lab-card {
+  text-decoration: none;
+  color: inherit;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 10px;
+  padding: 16px;
+  transition: all 0.3s ease;
+  display: block;
+  box-shadow: 0 4px 14px rgba(2,6,23,0.5);
+}
+.labs-grid a.lab-card:hover {
+  transform: translateY(-4px);
+  background: linear-gradient(180deg, rgba(124,92,255,0.15), rgba(94,231,223,0.1));
+  border-color: rgba(124,92,255,0.4);
+  box-shadow: 0 8px 24px rgba(124,92,255,0.25);
+}
+
+/* ========= SCROLL FADE ANIMATION ========= */
+.section, .card, .proj, .lab-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.section.visible, .card.visible, .proj.visible, .lab-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========= CONTACT FORM ========= */
+.contact-form input, textarea {
+  width: 100%;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 10px;
+  color: inherit;
+}
+.form-row { display: flex; gap: 10px; }
+.form-actions { display: flex; gap: 10px; margin-top: 8px; }
+
+/* ========= FOOTER ========= */
+.site-footer {
+  text-align: center;
+  color: var(--muted);
+  margin-top: 20px;
+}
+.footer-inner {
+  display: flex; justify-content: space-between; flex-wrap: wrap;
+  padding: 12px; background: rgba(255,255,255,0.04);
+  border-radius: 10px;
+  backdrop-filter: blur(4px);
+}
+
+/* ========= 3D FLOATING CARD EFFECT ========= */
+@keyframes floatDrift {
+  0% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-10px) translateX(5px) rotate(0.5deg);
+  }
+  50% {
+    transform: translateY(-5px) translateX(-5px) rotate(-0.5deg);
+  }
+  75% {
+    transform: translateY(-12px) translateX(3px) rotate(0.3deg);
+  }
+  100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+  }
+}
+
+/* Subtle glow breathing */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 6px 20px rgba(0,0,0,0.5); }
+  50% { box-shadow: 0 10px 25px rgba(124,92,255,0.35); }
+}
+
+/* Apply animations */
+lab-card, .profile-card {
+  animation: floatDrift 1s ease-in-out infinite, glowPulse 6s ease-in-out infinite;
+  will-change: transform, box-shadow;
+}
+
+/* Slightly stagger timings for organic motion */
+.profile-card { animation-delay: 0s, 0s; }
+.card:nth-child(odd) { animation-delay: 1.5s, 0.8s; }
+.card:nth-child(even) { animation-delay: 3s, 2s; }
+.labs-grid a.lab-card:nth-child(3n+1) { animation-delay: 2s, 1s; }
+.labs-grid a.lab-card:nth-child(3n+2) { animation-delay: 4s, 3s; }
+.labs-grid a.lab-card:nth-child(3n+3) { animation-delay: 5s, 1.5s; }
+
